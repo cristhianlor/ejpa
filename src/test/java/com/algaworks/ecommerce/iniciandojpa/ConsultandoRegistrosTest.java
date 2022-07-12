@@ -1,38 +1,12 @@
 package com.algaworks.ecommerce.iniciandojpa;
 
+import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
-import javax.swing.*;
 
-public class ConsultandoRegistrosTest {
-
-    private static EntityManagerFactory emf;
-
-    private EntityManager em;
-
-    @BeforeClass
-    public static void setUpBeforeClass(){
-        emf = Persistence.createEntityManagerFactory("ejpa");
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass(){
-        emf.close();
-    }
-
-    @Before
-    public void setUp(){
-        em = emf.createEntityManager();
-    }
-
-    @After
-    public void tearDown(){
-        em.close();
-    }
+public class ConsultandoRegistrosTest extends EntityManagerTest {
 
     @Test
     public void buscarPorIdentificador(){
@@ -40,5 +14,16 @@ public class ConsultandoRegistrosTest {
 
         Assert.assertNotNull(produto);
         Assert.assertEquals("Kindle", produto.getNome());
+    }
+
+    @Test
+    public void atualizarAReferencia(){
+        Produto produto = em.find(Produto.class, 1);
+        produto.setNome("Microfone Samson");
+
+        em.refresh(produto);
+
+        Assert.assertEquals("Kindle", produto.getNome());
+
     }
 }
