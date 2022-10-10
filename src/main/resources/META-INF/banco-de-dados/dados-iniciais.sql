@@ -1,1 +1,2 @@
-insert into Produto (id, nome, preco, descricao) values (1, 'Kindle', 499.0, 'Conheça o novo Kindle!')
+insert into Produto (id, nome, preco, descricao) values (1, 'Kindle', 199.0, 'Conheça o novo Kindle!')
+insert into Produto (id, nome, preco, descricao) values (2, 'Canon', 499.0,  'A melhor definição para suas fotos!')
