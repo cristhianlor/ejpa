@@ -69,6 +69,25 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
     }
 
     @Test
+    public void ImpedirOperacaoComBancoDeDados(){
+
+        Produto produto = em.find(Produto.class, 2);
+        em.detach(produto);
+
+        //produto.setId(2);
+        produto.setNome("Canon Pro SX 5º Series");
+
+        em.getTransaction().begin();
+        produto.setId(2);
+        em.getTransaction().commit();
+        em.clear();
+
+        Produto produtoVerificacao = em.find(Produto.class, produto.getId());
+        Assert.assertNotNull(produtoVerificacao);
+        Assert.assertEquals("Canon", produtoVerificacao.getNome());
+    }
+
+    @Test
     public void atualizarObjeto(){
 
         Produto produto = new Produto();

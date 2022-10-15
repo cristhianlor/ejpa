@@ -26,10 +26,10 @@ public class PrimeiroCrudTest extends EntityManagerTest {
     @Test
     public void readCliente(){
 
-        Cliente cliente = em.find(Cliente.class, 3);
+        Cliente cliente = em.find(Cliente.class, 2);
 
-        Cliente clienteVerificacao = em.find(Cliente.class, 3);
-        Assert.assertNull(clienteVerificacao);
+        Cliente clienteVerificacao = em.find(Cliente.class, 2);
+        Assert.assertNotNull(clienteVerificacao);
 
     }
 
