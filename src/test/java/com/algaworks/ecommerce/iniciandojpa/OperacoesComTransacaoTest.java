@@ -13,7 +13,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
     public void inserirOPrimeiroObjeto(){
         Produto produto = new Produto();
 
-        produto.setId(3);
+        //produto.setId(3);
         produto.setNome("Go Prod Hero 5");
         produto.setDescricao("Para capturar os seus melhores momentos.");
         produto.setPreco(new BigDecimal(5000));
