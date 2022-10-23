@@ -34,7 +34,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
     }
 
     @Test
-    public void verificaRelacionamentoItemPedidoComPedido(){
+    public void verificaRelacionamentoPedidoComItemPedido(){
 
         Cliente cliente = em.find(Cliente.class, 1);
         Produto produto = em.find(Produto.class, 1);
@@ -46,6 +46,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
         pedido.setCliente(cliente);
 
         ItemPedido itemPedido = new ItemPedido();
+        itemPedido.setQuantidade(1);
         itemPedido.setPedido(pedido);
         itemPedido.setProduto(produto);
         itemPedido.setPrecoProduto(produto.getPreco());
@@ -57,9 +58,9 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
         em.clear();
 
-        ItemPedido itemPedidoVerificaca = em.find(ItemPedido.class, itemPedido.getId());
-        Assert.assertNotNull(itemPedidoVerificaca.getPedido());
-        Assert.assertNotNull(itemPedidoVerificaca.getProduto());
+        Pedido pedidoVerificacao = em.find(Pedido.class, pedido.getId());
+        Assert.assertFalse(pedidoVerificacao.getItensPedido().isEmpty());
+
 
     }
 
