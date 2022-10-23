@@ -17,11 +17,17 @@ public class ItemPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "pedido_id")
-    private Integer pedidoId;
-    @Column(name = "produto_id")
-    private Integer produtoId;
+
+    @JoinColumn(name = "pedido_id")
+    @ManyToOne
+    private Pedido pedido;
+
+    @JoinColumn(name = "produto_id")
+    @ManyToOne
+    private Produto produto;
+
     @Column(name = "preco_produto")
     private BigDecimal precoProduto;
+
     private Integer quantidade;
 }
