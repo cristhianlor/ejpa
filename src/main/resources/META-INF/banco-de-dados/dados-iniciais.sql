@@ -3,3 +3,5 @@ insert into produto (id, nome, preco, descricao) values (2, 'Canon', 499.0,  'A 
 
 insert into cliente (id, nome) values (1, 'Cristiano A. de Assis')
 insert into cliente (id, nome) values (2, 'Darlene A. Machado')
+
+insert into categoria (id, nome) values (1, 'Eletrônicos')
